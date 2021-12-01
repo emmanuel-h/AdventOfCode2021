@@ -12,10 +12,7 @@ object Day1Part1 {
   }
 
   def computeMeasure(depths: List[Int], measurementSize: Int): Int = {
-    var measurementIncreased = 0
-    for ((depth, index) <- depths.view.zipWithIndex)
-      if index >= measurementSize && depths.slice(index - measurementSize, index).sum > depths.slice(index - measurementSize - 1, index - 1).sum
-      then measurementIncreased = measurementIncreased + 1
-    measurementIncreased
+    depths.view.zipWithIndex
+      .count(tuple => tuple._2 >= measurementSize && depths.slice(tuple._2 - measurementSize, tuple._2).sum > depths.slice(tuple._2 - measurementSize - 1, tuple._2 - 1).sum)
   }
 }
