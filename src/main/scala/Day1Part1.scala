@@ -4,7 +4,7 @@ object Day1Part1 {
 
   def main(args: Array[String]): Unit = {
     var measurementIncreased = 0
-    val list = Source.fromFile("/home/eherrmann/Documents/AdventOfCode2021/src/main/scala/day_01_part_1_input").getLines()
+    val list = Source.fromResource("day_01_input").getLines()
       .toList
       .map(i => i.toInt)
 
