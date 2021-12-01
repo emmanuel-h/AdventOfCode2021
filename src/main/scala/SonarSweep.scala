@@ -1,6 +1,6 @@
 import scala.io.Source
 
-object Day1Part1 {
+object SonarSweep {
 
   def main(args: Array[String]): Unit = {
     val depths = Source.fromResource("day_01_input").getLines()
