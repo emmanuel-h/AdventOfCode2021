@@ -8,6 +8,7 @@ object Dive {
     println(finalPosition._1 * finalPosition._2)
   }
 
+//  result: (horizontalPosition, depth)
   def course(movements: List[(String, Int)]): (Int, Int) = {
     movements.map {
       case _@move if move._1 == "forward" => (move._2, 0)
@@ -15,7 +16,7 @@ object Dive {
       case _@move if move._1 == "down" => (0, move._2)
       case _ => (0, 0)
     }
-      .reduce((x: (Int, Int), y: (Int, Int)) => (x._1 + y._1, x._2 + y._2))
+      .reduce((x, y) => (x._1 + y._1, x._2 + y._2))
   }
 
   private def readInputs(): List[(String, Int)] = {
