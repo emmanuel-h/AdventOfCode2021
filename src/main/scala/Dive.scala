@@ -10,13 +10,17 @@ object Dive {
 
 //  result: (horizontalPosition, depth)
   def course(movements: List[(String, Int)]): (Int, Int) = {
-    movements.map {
-      case _@move if move._1 == "forward" => (move._2, 0)
-      case _@move if move._1 == "up" => (0, -move._2)
-      case _@move if move._1 == "down" => (0, move._2)
-      case _ => (0, 0)
+    var depth = 0
+    var position = 0
+    var aim = 0
+    for (m <- movements) {
+      if m._1 == "forward" then {
+        position = position + m._2
+        depth = depth + (aim * m._2)
+      }
+      else aim = if (m._1 == "up") aim - m._2 else aim + m._2
     }
-      .reduce((x, y) => (x._1 + y._1, x._2 + y._2))
+    (position, depth)
   }
 
   private def readInputs(): List[(String, Int)] = {
