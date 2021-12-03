@@ -25,7 +25,7 @@ object PowerConsumption {
     val list = Array.fill(report.head.length)(0)
     report.foreach { r => r.view.zipWithIndex.foreach { (c, i) => list(i) = list(i) + (if c == '0' then 1 else -1) } }
     val gammaRate = Integer.parseInt(list.map(a => if a > 0 then '0' else '1').mkString, 2)
-    (gammaRate, (~gammaRate) & (~gammaRate & ~(~0 << report.head.length)))
+    (gammaRate, (~gammaRate & ~(~0 << report.head.length)))
   }
 
   private def readInputs(): List[String] = {
